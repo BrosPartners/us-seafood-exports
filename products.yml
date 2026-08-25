@@ -1,0 +1,55 @@
+# Nguồn sự thật duy nhất về việc dashboard hiển thị nhóm nào.
+# Thêm nhóm mới = thêm một mục ở đây. Không cần sửa code, không cần kéo lại
+# dữ liệu, vì data/trade_exports.csv đã chứa toàn bộ ~500 sản phẩm của NOAA.
+#
+# product  — phải trùng TUYỆT ĐỐI trường `name` của NOAA, kể cả dấu chấm và ngoặc.
+# countries — danh sách thị trường (nước Mỹ xuất khẩu ĐẾN) muốn tách riêng.
+#             Phần còn lại gộp vào dòng "Other". Để trống thì nhóm đó không có
+#             breakdown và không có dòng "Other".
+# known_absent — nước nằm trong `countries` nhưng CHƯA TỪNG có dòng dữ liệu nào
+#             cho product đó trong toàn bộ lịch sử đã kéo về. Khai báo ở đây để
+#             build.py biết đây là zero-row CHỦ Ý, không phải dấu hiệu NOAA đổi
+#             tên/gõ sai — build sẽ KHÔNG fail vì thiếu dữ liệu ở nước này.
+#             build.py tự kiểm tra ngược: nếu nước trong known_absent bắt đầu
+#             CÓ dữ liệu thật, build sẽ fail để nhắc gỡ entry đó ra.
+#
+# 7 nhóm dưới đây là 7 sản phẩm thủy sản Mỹ XUẤT KHẨU có tổng giá trị lớn nhất
+# 2023-01 -> 2026-06 (nguồn: data/trade_exports.csv, NOAA source=EXP), mỗi
+# nhóm liệt kê các thị trường lớn nhất cộng dồn đạt phần lớn giá trị nhóm đó.
+# Danh sách này khác hẳn products.yml của dashboard NHẬP KHẨU vì cơ cấu sản
+# phẩm/thị trường xuất khẩu của Mỹ hoàn toàn khác nhập khẩu.
+
+- key: lobster
+  label: Tôm hùm (Lobster)
+  product: "LOBSTER (HOMARUS SPP.) LIVE/FRESH"
+  countries: [CANADA, CHINA, ITALY, CHINA - HONG KONG, SPAIN]
+
+- key: pollock_surimi
+  label: Surimi cá Minh Thái Alaska
+  product: "GROUNDFISH POLLOCK ALASKA SURIMI"
+  countries: [SOUTH KOREA, JAPAN, FRANCE, LITHUANIA]
+
+- key: pollock_fillet
+  label: Cá Minh Thái Alaska phi lê đông lạnh
+  product: "GROUNDFISH POLLOCK ALASKA FILLET FROZEN"
+  countries: [NETHERLANDS, GERMANY, CANADA]
+
+- key: salmon_sockeye
+  label: Cá hồi Sockeye đông lạnh
+  product: "SALMON SOCKEYE FROZEN"
+  countries: [CANADA, JAPAN, GERMANY, POLAND]
+
+- key: salmon_roe
+  label: Trứng cá hồi đông lạnh
+  product: "SALMON NSPF ROE FROZEN"
+  countries: [JAPAN, LITHUANIA, GERMANY]
+
+- key: cod
+  label: Cá tuyết (Cod NSPF) đông lạnh
+  product: "GROUNDFISH COD NSPF FROZEN"
+  countries: [CHINA, INDONESIA, SOUTH KOREA, NORWAY]
+
+- key: crab
+  label: Cua (Crab NSPF) tươi/sống
+  product: "CRAB NSPF LIVE/FRESH"
+  countries: [CHINA, CANADA]
