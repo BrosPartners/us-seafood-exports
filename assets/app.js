@@ -788,7 +788,7 @@ function renderMasterCharts() {
   }
   spreadCard.hidden = false;
 
-  const spreadOptions = baseOptions("Chênh lệch so với cá tra (USD/kg)");
+  const spreadOptions = baseOptions("Chênh lệch so với tôm hùm (USD/kg)");
   // Đường 0 là mốc cá tra — vẽ đậm hơn lưới thường để mắt bắt được ngay.
   spreadOptions.scales.y.grid = {
     color: (ctx) => (ctx.tick.value === 0
